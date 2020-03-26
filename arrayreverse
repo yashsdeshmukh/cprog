@@ -9,7 +9,7 @@ int main ()
     printf("Enter the terms");
     for(i=0;i<n;i++)
        {
-         scanf("%d",a[i]);
+         scanf("%d",&a[i]);
        }
     printf("The swapped array is");
     for(i=n-1;i>=0;i--)
