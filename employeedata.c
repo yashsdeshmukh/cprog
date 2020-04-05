@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 struct empdata
 {
     int code;
@@ -6,9 +7,10 @@ struct empdata
     char desig[20];
     int salary;
 };
-void salarysort(int n,struct empdata e)
+void salarysort(int n,struct empdata e[30])
 {
-    int i,j,k,temp;
+    int i,j,k;
+    struct empdata temp;
     for(i=1;i<n;i++)
     {
         for(j=0;j<n-i;j++)
@@ -22,21 +24,23 @@ void salarysort(int n,struct empdata e)
             else
                 continue;
         }
+        	printf("\nEmployees in descending order of salary:\n");
     for(i=0;i<n;i++)
-    {
+    {	
         printf("%-10d%-30s%-20s%-10d\n",e[i].code,e[i].name,e[i].desig,e[i].salary);
     }
 
 }
 }
-void desigsort(int n,struct empdata e);
+void desigsort(int n,struct empdata e[30])
 {
-   int i,j,k;
+   int i,j,k,r;
+   struct empdata temp;
    for(i=1;i<n;i++)
    {
        for(j=0;j<n-i;j++)
        {
-           r=strcmp(e[j].des,e[j+1].des);
+           r=strcmp(e[j].desig,e[j+1].desig);
            if(r>0)
            {
                temp=e[j];
@@ -45,8 +49,9 @@ void desigsort(int n,struct empdata e);
            }
        }
    }
+   	printf("\nEmployees in ascending order of Designation:\n");  
    for(i=0;i<n;i++)
-    {
+    { 	
         printf("%-10d%-30s%-20s%-10d\n",e[i].code,e[i].name,e[i].desig,e[i].salary);
     }
 }
@@ -62,7 +67,7 @@ int main()
         printf("Enter employee %d data in the order\n1.Code 2.Name 3.Designation 4.Salary \n",i+1);
         scanf("%d%s%s%d",&e[i].code,e[i].name,e[i].desig,&e[i].salary);
     }
-    salarysort(int n,struct empdata e);
-    desigsort(int n,struct empdata e);
+    salarysort(n,e);
+    desigsort(n,e);
     return 0;
 }
